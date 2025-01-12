@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MyProject.Models.order_tbl>
+
+@{
+    ViewBag.Title = "AdminOrder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <h2>AdminOrder</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table table-bordered display" id="table_id">
+        <thead>
+            <tr style="color:white">
+                <th>
+                    @Html.DisplayNameFor(model => model.fk_cart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.order_no)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.total_price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fk_tbl_u)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Order_Status)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="color:white">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fk_cart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.order_no)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.total_price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fk_tbl_u)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Order_Status)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "OEdit", new
+                        {
+                            id = item.oid
+                        }) |
+                        @Html.ActionLink("Details", "Details", new
+                        {
+                            id = item.oid
+                        }) |
+                        @Html.ActionLink("Delete", "Delete", new
+                        {
+                            id = item.oid
+                        })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

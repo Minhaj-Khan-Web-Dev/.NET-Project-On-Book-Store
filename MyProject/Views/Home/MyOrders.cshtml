@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "MyOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 style="text-align:center;">Your Orders</h2>
+<br />
+<div class="container-fluid">
+    <table class="table table-bordered">
+
+        <tr>
+            <th style="color: rgb(158, 9, 36) ">Name</th>
+            <th style="color: rgb(158, 9, 36) ">Order Number</th>
+            <th style="color: rgb(158, 9, 36) ">Product Price</th>
+            <th style="color: rgb(158, 9, 36) ">Order Status</th>
+        </tr>
+        @foreach (var item in ViewBag.naam)
+        {
+            <tr>
+                <td>@item.fk_tbl_u</td>
+                <td>@item.order_no</td>
+                <td>@item.total_price</td>
+                <td>@item.Order_Status</td>
+
+            </tr>
+
+
+        }
+
+
+
+
+    </table>
+</div>
+<br />

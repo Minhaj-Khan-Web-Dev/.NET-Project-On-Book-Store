@@ -1,0 +1,208 @@
+﻿@model IEnumerable<MyProject.Models.Product>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+
+            <div class="col-md-6">
+                <div id="product-main-img">
+                    <div class="product-preview">
+                        <img src="~/ProjectImages/@item.ProImage" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-details">
+                    <a href="@item.ProId"><h2 class="product-name">@item.ProName</h2></a>
+                    <div>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                       
+                    </div>
+                    <div>
+                        <h3 class="product-price">@item.ProPrice$</h3>
+                        <span class="product-available">In Stock</span>
+                    </div>
+                    <p>@item.ProDetails</p>
+
+                    <div class="product-options">
+                        <label>
+                            Size
+                            <select class="input-select">
+                                <option value="0">X</option>
+                            </select>
+                        </label>
+                        <label>
+                            Color
+                            <select class="input-select">
+                                <option value="0">Red</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="add-to-cart">
+                        <div class="qty-label">
+                          <strong style="color:red">Quantity Available.</strong>
+                         
+                            <div class="input-number">
+                                
+                                <h6 class="product-price">@item.Pro_qty</h6>
+
+                            </div>
+                        </div>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                    </div>
+
+                    <ul class="product-btns">
+                        <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
+                        <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Category:</li>
+                        <li><a href="#">Headphones</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Share:</li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            }
+            <div class="col-md-12">
+                <div id="product-tab">
+                    <!-- product tab nav -->
+                    <ul class="tab-nav">
+                        <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
+                        <li><a data-toggle="tab" href="#tab2">Details</a></li>
+                        <li><a data-toggle="tab" href="#tab3">Reviews</a></li>
+                    </ul>
+                    <!-- /product tab nav -->
+                    <!-- product tab content -->
+                    <div class="tab-content">
+                        <!-- tab1  -->
+                        <div id="tab1" class="tab-pane fade in active">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-12">
+                                        <p>@item.ProDetails</p>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                        <!-- /tab1  -->
+                        <!-- tab2  -->
+                        <div id="tab2" class="tab-pane fade in">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-12">
+                                        <p>@item.ProDetails</p>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                        <!-- /tab2  -->
+                        <!-- tab3  -->
+                        <div id="tab3" class="tab-pane fade in">
+                            <div class="row">
+                              
+                                <!-- Reviews -->
+                                <div class="col-md-6">
+                                    <div id="reviews">
+                                       
+                                        <ul class="reviews">
+
+                                            @foreach (var item in ViewBag.reve)
+                                            {
+                                                if (item.Productid == ViewBag.ID)
+                                                {
+
+
+
+                                                    <li>
+                                                        <div class="review-heading">
+                                                            <h5 class="name">@item.userName</h5>
+                                                            <p class="date"></p>
+                                                            <div class="review-rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star" ></i>
+                                                                <i class="fa fa-star" ></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o empty" ></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-body">
+                                                            <p>@item.rev_details</p>
+                                                        </div>
+                                                    </li>
+
+                                                }
+                                            }
+
+                                        </ul>
+                                        
+
+                                       
+                                    </div>
+                                </div>
+                                <!-- /Reviews -->
+                                <!-- Review Form -->
+                                <div class="col-md-6">
+                                    <div id="review-form">
+                                        <form class="review-form" method="post">
+
+                                            <input type="hidden" name="Id" value="@ViewBag.ID" />
+
+                                            <input class="input" required type="text" placeholder="Your Name" name="userName">
+                                            <input class="input" required type="email" name="u_email" placeholder="Your Email">
+                                            <textarea class="input" required placeholder="Your Review" name="rev_details"></textarea>
+                                            <div class="input-rating">
+                                                <span>Your Rating: </span>
+                                                <div class="stars">
+                                                    <input id="star5" name="rev_star" value="5" type="radio"><label for="star5"></label>
+                                                    <input id="star4" name="rev_star" value="4" type="radio"><label for="star4"></label>
+                                                    <input id="star3" name="rev_star" value="3" type="radio"><label for="star3"></label>
+                                                    <input id="star2" name="rev_star" value="2" type="radio"><label for="star2"></label>
+                                                    <input id="star1" name="rev_star" value="1" type="radio"><label for="star1"></label>   
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <button type="submit" class="primary-btn">Submit</button>
+                                    </form>
+                                </div>
+                                <!-- /Review Form -->
+                            </div>
+                        </div>
+                        <!-- /tab3  -->
+                    </div>
+                    <!-- /product tab content  -->
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

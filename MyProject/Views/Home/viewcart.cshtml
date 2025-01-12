@@ -1,0 +1,116 @@
+﻿@model IEnumerable<MyProject.extars.viewcart>
+
+@{
+    int count = 0;
+    ViewBag.Title = "viewcart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string FINAL_TOTAL = "0.00";
+}
+
+
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            
+
+            <!-- Order Details -->
+            <div class="col-md-12 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">Your Order</h3>
+                </div>
+
+                <div class="order-summary">
+                    <div class="order-col">
+                        <div><strong>PRODUCT</strong></div>
+                        <div><strong>PRICE</strong></div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="order-products">
+                            <div class="order-col">
+                                <div>
+                                    <span class="h3" onclick="incrs_cart_qty(@item.pid,@count)" style="cursor:pointer;">+</span>
+                                    <h3 class="inc_count dec_count">@item.qty </h3>
+                                    <span class="h2" onclick="dcrs_cart_qty(@item.pid,@count)" style="cursor:pointer;">-</span>
+                                </div>
+
+                                <img width="60" height="60" src="~/ProjectImages/@item.pimage" />
+
+                                <div>@item.pname</div>
+
+                                <div class="order-total h1">@item.uprice</div>
+
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="order-col">
+                            <div><strong>TOTAL</strong></div>
+                            <div><strong class="order-total">Rs @item.totalprice</strong></div>
+                        </div>
+                        FINAL_TOTAL = Convert.ToString(Convert.ToDouble(FINAL_TOTAL) + Convert.ToDouble(@item.totalprice));
+
+                    }
+                    <div class="order-col">
+                        <div><strong>TOTAL PRICE:</strong></div>
+                        <div><strong class="order-total">Rs @FINAL_TOTAL</strong></div>
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-1">
+                        <label for="payment-1">
+                            <span></span>
+                            Direct Bank Transfer
+                        </label>
+                        <div class="caption">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-2">
+                        <label for="payment-2">
+                            <span></span>
+                            Cheque Payment
+                        </label>
+                        <div class="caption">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-3">
+                        <label for="payment-3">
+                            <span></span>
+                            Paypal System
+                        </label>
+                        <div class="caption">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-checkbox">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">
+                        <span></span>
+                        I've read and accept the <a href="#">terms & conditions</a>
+                    </label>
+                </div>
+               
+                <a href="@Url.Action("proceedToCheckOut","Home")" class="primary-btn order-submit">CHECKOUT</a>
+
+
+            </div>
+            <!-- /Order Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

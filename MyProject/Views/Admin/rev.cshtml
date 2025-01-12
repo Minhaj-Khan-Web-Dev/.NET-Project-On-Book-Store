@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MyProject.Models.Review>
+
+@{
+    ViewBag.Title = "rev";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <br />
+
+    <h2 style="text-align:center">Reviews List</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table display" id="table_id">
+        <thead>
+            <tr style="color:white">
+                <th>
+                    @Html.DisplayNameFor(model => model.userName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.u_email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rev_details)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rev_star)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Productid)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="color:white">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.userName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.u_email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rev_details)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rev_star)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Productid)
+                    </td>
+                    <td>
+                       
+                       
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

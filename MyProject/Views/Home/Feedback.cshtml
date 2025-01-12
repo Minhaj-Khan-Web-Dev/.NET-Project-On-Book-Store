@@ -1,0 +1,25 @@
+﻿@model MyProject.Models.FAQ
+
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">Feedback</h2>
+<div class="container-fluid">
+    <!-- Review Form -->
+    <div class="col-md-12">
+        <div id="review-form">
+            <form class="review-form" method="post">
+
+
+                <input class="input" type="text" placeholder="Your Name" name="Name">
+
+                <textarea class="input" placeholder="Feedback" name="f_qus"></textarea>
+
+        </div>
+    </div>
+    <button type="submit" class="primary-btn">Submit</button>
+    </form>
+</div>
+<!-- /Review Form -->

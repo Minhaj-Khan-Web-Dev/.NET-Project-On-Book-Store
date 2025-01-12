@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MyProject.Models.FAQ>
+
+@{
+    ViewBag.Title = "FAR";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <h2 style="text-align:center;">FAQS</h2>
+
+   
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Customers
+            </th>
+            <th>
+               Their Questions
+            </th>
+            <th>
+                Our Answers
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.f_qus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.f_ans)
+                </td>
+               
+            </tr>
+        }
+
+    </table>
+</div>

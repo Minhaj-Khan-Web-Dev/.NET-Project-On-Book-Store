@@ -1,0 +1,30 @@
+﻿@model MyProject.extars.cnfrmorder
+@{
+    ViewBag.Title = "ConfirmOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">CONFIRM YOUR ORDER</h2>
+
+<table class="table table-bordered">
+    @foreach (var item in Model.products)
+    {
+        <tr>
+    <th>@item.id</th>
+    <th>@item.prdtname x @item.qty qty of product </th> 
+            
+    <td>@item.pricexqty  </td>
+</tr>
+    }
+    
+   
+    
+    <tr>
+        <th>Total Amount</th>
+        <td>@Model.totalAmount</td>
+    </tr>
+    <tr>
+        <td><a href="@Url.Action("PlaceOrder","Home")" class="btn btn-primary">Confirm</a></td>
+        
+    </tr>
+</table>

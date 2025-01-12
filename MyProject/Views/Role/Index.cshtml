@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MyProject.Models.Role_tbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered display" id="table_id">
+    <thead>
+        <tr style="color:white">
+            <th>
+                @Html.DisplayNameFor(model => model.Registers.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Registers.user_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Registers.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role_Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="color:white">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Registers.username)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Registers.user_email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Registers.password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role_Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new
+                    {
+                        id = item.Role_id
+                    }) |
+                    @Html.ActionLink("Details", "Details", new
+                    {
+                        id = item.Role_id
+                    }) |
+                    @Html.ActionLink("Delete", "Delete", new
+                    {
+                        id = item.Role_id
+                    })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
